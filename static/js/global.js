@@ -68,3 +68,12 @@
     
 
 })(jQuery);
+
+function open_1() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+/* Set the width of the side navigation to 0 */
+function close_1() {
+document.getElementById("mySidenav").style.width = "0";
+}

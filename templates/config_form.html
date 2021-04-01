@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Title Page-->
+    <title>Test CS Group 2 Project</title>
+
+    <!-- Icons font CSS-->
+    <link href="../static/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="../static/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="../static/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="../static/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="../static/css/main.css" rel="stylesheet" media="all">
+</head>
+
+<body>
+    <!-- self.user_name = urllib.parse.quote_plus('Your_Mongo_Username')
+        self.password = urllib.parse.quote_plus('Your_Mongo_Password')
+        self.database_name = "Mongo_Database_Name"
+        self.collection_Name = "Mongo_Collection_Name" -->
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="close_1();">&times;</a>
+            <form action = "{{url_for('form_data_view')}}" method="GET">
+                <div class="p-t-15">
+                    <button class="btn btn--radius-2 btn--blue" type="submit">Home</button>
+                </div>
+            </form>
+            <form action = "{{url_for('history1')}}" method="GET">
+                <div class="p-t-15">
+                    <button class="btn btn--radius-2 btn--blue" type="submit">History</button>
+                </div>
+            </form>
+            <form action = "{{url_for('config_form_data_view')}}" method="GET">
+                <div class="p-t-15">
+                    <button class="btn btn--radius-2 btn--blue" type="submit">Config</button>
+                </div>
+            </form>
+            </div></a>
+          </div> 
+    <div class="page-wrapper bg-gra-02 p-t-10 p-b-100 font-poppins">
+        <span style="font-size:30px;cursor:pointer" onclick="open_1();">&#9776;</span>
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body"> 
+                    <center>
+                    <h2 class="title">Configuration Details</h2>
+                    <form action="{{url_for('conn_details')}}" method="POST">
+                        <div class="p-t-15">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">User Name</label>
+                                    <input class="input--style-4" type="text" name="UserName" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-t-15">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Password</label>
+                                    <input class="input--style-4" type="password" name="Password" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-t-15">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Database Name</label>
+                                    <input class="input--style-4" type="text" name="DBName" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-t-15">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Collection Name</label>
+                                    <input class="input--style-4" type="text" name="CollectionName" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-t-15">
+                            <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </center>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="../static/vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="../static/vendor/select2/select2.min.js"></script>
+    <script src="../static/vendor/datepicker/moment.min.js"></script>
+    <script src="../static/vendor/datepicker/daterangepicker.js"></script>
+
+    <!-- Main JS-->
+    <script src="../static/js/global.js"></script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+<!-- end document-->

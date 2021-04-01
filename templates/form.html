@@ -4,7 +4,7 @@
 <head>
 
     <!-- Title Page-->
-    <title>CS Group 2 Project</title>
+    <title>Data Reconciliation Tool</title>
 
     <!-- Icons font CSS-->
     <link href="static/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -18,10 +18,32 @@
 
     <!-- Main CSS-->
     <link href="static/css/main.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 <body>
-    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="close_1();">&times;</a>
+        <form action = "{{url_for('form_data_view')}}" method="GET">
+            <div class="p-t-15">
+                <button class="btn btn--radius-2 btn--blue" type="submit">Home</button>
+            </div>
+        </form>
+        <form action = "{{url_for('history1')}}" method="GET">
+            <div class="p-t-15">
+                <button class="btn btn--radius-2 btn--blue" type="submit">History</button>
+            </div>
+        </form>
+        <form action = "{{url_for('config_form_data_view')}}" method="GET">
+            <div class="p-t-15">
+                <button class="btn btn--radius-2 btn--blue" type="submit">Config</button>
+            </div>
+        </form>
+        </div></a>
+      </div> 
+      <div class="page-wrapper bg-gra-02 p-t-10 p-b-100 font-poppins">
+        <span style="font-size:30px;cursor:pointer" onclick="open_1();">&#9776;</span>
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
@@ -46,7 +68,7 @@
                                     <select name="Source_2" required>
                                         <option disabled="disabled" selected="selected" value="">Choose option</option>
                                         <option>MongoDB</option>
-                                        <option>API 1</option>
+                                        <option>Excel Sheet</option>
                                         <option>API 2</option>
                                     </select>
                                     <div class="select-dropdown"></div>
@@ -159,6 +181,8 @@
 
     <!-- Main JS-->
     <script src="static/js/global.js"></script>
+
+
 
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
