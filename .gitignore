@@ -1,2 +1,5 @@
+.gitignore
 config.py
 sec_bhavdata_full.csv
+sec_bhavdata_diff.csv
+sample.py

@@ -15,8 +15,8 @@
 
             <div class="jumbotron p-3">
 
-                <h2>Comparision Results  <a href="{{url_for('form_data_view')}}"><button style="background-color: darkorchid;" type="button"  class="btn btn-success float-right"
-                  data-toggle="modal" data-target="#mymodal" >New Search</button></a> </h2>
+                <h2>Comparision Results  <a href="{{url_for('form_data_view')}}"><button style="background-color: rgb(0, 0, 0);" type="button"  class="btn float-right"
+                  data-toggle="modal" data-target="#mymodal" >New Search</button></a><br><br> </h2>
 
 
                 {% with messages = get_flashed_messages() %}
@@ -47,32 +47,32 @@
 
 
                 <table class="table table-hover table-dark">
-
+                    <colgroup>
+                        <col span="5">
+                        <col style="background-color:rgb(7, 7, 7)">
+                        <col style="background-color: rgb(7, 7, 7);">
+                      </colgroup>
                     <tr>
-
-                        <th>Symbol</th>
-                        <th>Date</th>
-                        <th>Prev_Close</th>
-                        <th>Open Price</th>
-                        <th>Close Price</th>
-
+                        <th>Symbol</th> 
+                        <th>Date 1</th>
+                        <th>Date 2</th>
+                        <th>Source 1 <br> {{Col_1}}</th>
+                        <th>Source 2 <br> {{Col_2}}</th>
+                        <th>Difference</th>
+                        <th>Percentage <br> Difference</th>
                     </tr>
 
 
                    {% for row in Companies %}
                     <tr>
                         <td>{{row['Symbol']}}</td>
-                        <td>{{row['Date']}}</td>
-                        <td>{{row['Prev_Close']}}</td>
-                        <td>{{row['Open_Price']}}</td>
-                        <td>{{row['Close_Price']}}</td>
-
-
+                        <td>{{Date_1}}</td>
+                        <td>{{Date_2}}</td>
+                        <td>{{row['Col_1']}}</td>
+                        <td>{{row['Col_2']}}</td>
+                        <td>{{row['Diff']}}</td>
+                        <td>{{row['percentage']}} %</td>
                     </tr>
-
-
-
-
                     {% endfor %}
 
 

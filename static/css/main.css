@@ -176,7 +176,7 @@ button {
 }
 
 body {
-  font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
+  font-family: "CS W01 eP Bold v3","Poppins", "Arial", "Helvetica Neue", sans-serif;
   font-weight: 400;
   font-size: 14px;
 }
@@ -220,22 +220,36 @@ h6 {
   background: #fa4251;
 }
 
-.bg-gra-01 {
-  background: -webkit-gradient(linear, left bottom, left top, from(#fbc2eb), to(#a18cd1));
-  background: -webkit-linear-gradient(bottom, #fbc2eb 0%, #a18cd1 100%);
-  background: -moz-linear-gradient(bottom, #fbc2eb 0%, #a18cd1 100%);
-  background: -o-linear-gradient(bottom, #fbc2eb 0%, #a18cd1 100%);
-  background: linear-gradient(to top, #fbc2eb 0%, #a18cd1 100%);
+/* .bg-gra-01 {
+  background: -webkit-gradient(linear, left bottom, left top, from(#cde6fa), to(#003662));
+  background: -webkit-linear-gradient(bottom, #cde6fa 0%, #003662 100%);
+  background: -moz-linear-gradient(bottom, #cde6fa 0%, #003662 100%);
+  background: -o-linear-gradient(bottom, #cde6fa 0%, #003662 100%);
+  background: linear-gradient(to top, #cde6fa 0%, #003662 100%);
 }
 
 .bg-gra-02 {
-  background: -webkit-gradient(linear, left bottom, right top, from(#fc2c77), to(#6c4079));
-  background: -webkit-linear-gradient(bottom left, #fc2c77 0%, #6c4079 100%);
-  background: -moz-linear-gradient(bottom left, #fc2c77 0%, #6c4079 100%);
-  background: -o-linear-gradient(bottom left, #fc2c77 0%, #6c4079 100%);
-  background: linear-gradient(to top right, #fc2c77 0%, #6c4079 100%);
+  background: -webkit-gradient(linear, left bottom, right top, from(#cde6fa), to(#003662));
+  background: -webkit-linear-gradient(bottom left, #cde6fa 0%, #003662 100%);
+  background: -moz-linear-gradient(bottom left, #cde6fa 0%, #003662 100%);
+  background: -o-linear-gradient(bottom left, #cde6fa 0%, #003662 100%);
+  background: linear-gradient(to top right, #cde6fa 0%, #003662 100%);
+} */
+.bg-gra-01 {
+  background: -webkit-gradient(linear, left bottom, left top, from(#cde6fa), to(#003662));
+  background: -webkit-linear-gradient(bottom, #cde6fa 0%, #003662 100%);
+  background: -moz-linear-gradient(bottom, #cde6fa 0%, #003662 100%);
+  background: -o-linear-gradient(bottom, #cde6fa 0%, #003662 100%);
+  background: linear-gradient(to top, #cde6fa 0%, #003662 100%);
 }
 
+.bg-gra-02 {
+  background: -webkit-gradient(linear, left bottom, right top, from(#003662), to(#cde6fa));
+  background: -webkit-linear-gradient(bottom left, #003662 0%, #cde6fa 100%);
+  background: -moz-linear-gradient(bottom left, #003662 0%, #cde6fa 100%);
+  background: -o-linear-gradient(bottom left, #003662 0%, #cde6fa 100%);
+  background: linear-gradient(to top right, #003662 0%, #cde6fa 100%);
+}
 /* ==========================================================================
    #SPACING
    ========================================================================== */
@@ -311,6 +325,8 @@ h6 {
   font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
 }
 
+
+
 .btn--radius {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -335,6 +351,14 @@ h6 {
 
 .btn--green:hover {
   background: #4dae3c;
+}
+
+.btn--black {
+  background: #060707;
+}
+
+.btn--black:hover {
+  background: #000000;
 }
 
 .btn--blue {

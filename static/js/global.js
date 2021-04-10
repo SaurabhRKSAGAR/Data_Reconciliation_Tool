@@ -77,3 +77,4 @@ function open_1() {
 function close_1() {
 document.getElementById("mySidenav").style.width = "0";
 }
+

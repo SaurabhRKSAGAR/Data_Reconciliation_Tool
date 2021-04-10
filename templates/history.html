@@ -17,8 +17,11 @@
             <div class="jumbotron p-3">
 
                 <h2>History </h2>
-
-
+                <br>
+                <h5><b>Please ensure that Source Configurations are met before executing the historical comparisions.</b></h5>
+                <br>
+                <h5><u><a href="{{url_for('config_form_data_view')}}"> Configure the sources here.</a></u><b></b></h5>
+                <br>
                 {% with messages = get_flashed_messages() %}
 
                 {% if messages %}
@@ -47,32 +50,37 @@
 
 
                 <table class="table table-hover table-dark">
-
+                    <!-- <form action="{{url_for('process_form_data')}}" method="post"> -->
                     <tr>
 
-                        <th>Source 1</th>
-                        <th>Source 2</th>
-                        <th>Compare</th>
-
+                        <th style="text-align: center;">Source 1</th>
+                        <th style="text-align: center;">Date 1</th>
+                        <th style="text-align: center;">Comparision <br> Field 1</th>
+                        <th style="text-align: center;">Source 2</th>
+                        <th style="text-align: center;">Date 2</th>
+                        <th style="text-align: center;">Comparision <br> Field 2</th>
+                        <th style="text-align: center;">Compare</th>
                     </tr>
 
 
                    {% for row in hRows %}
-                    <tr>
-                        <td>{{row['Source_1']}}</td>
-                        <td>{{row['Source_2']}}</td>
-<!--                        <td align="center"><button onclick={{url_for('form_data_view')}}">Compare</button></td>-->
-                        <td><form action="{{url_for('form_data_view')}}"><input type="submit" value="Compare" style="width:100%;background-color: rgb(255, 255, 255);font-size: 14px;border-radius: 5px;padding: 8px;"></form></td>
+                   <tr>
+                    <form action="{{url_for('process_form_data')}}" method="post">
+                    <th><input style="height:50px;outline:none;background-color:#343a40;text-align:center;color: white;" text-align="center" type="text" name="Source_1" value="{{row.Source_1.Source_1}}" readonly required></th>
+                    <th><input style="height:50px;outline:none;background-color:#343a40;text-align:center;color: white;" type="text" name="Date_1" value="{{row.Source_1.Date_1}}" readonly required></th>
+                    <th><input style="height:50px;outline:none;background-color:#343a40;text-align:center;color: white;" type="text" name="Comp_Column_1" value="{{row.Source_1.Comp_Column_1}}" readonly required></th>
+                    <th><input style="height:50px;outline:none;background-color:#343a40;text-align:center;color: white;" type="text" name="Source_2" value="{{row.Source_2.Source_2}}" readonly required></th>
+                    <th><input style="height:50px;outline:none;background-color:#343a40;text-align:center;color: white;" type="text" name="Date_2" value="{{row.Source_2.Date_2}}" readonly required></th>
+                    <th><input style="height:50px;outline:none;background-color:#343a40;text-align:center;color: white;" type="text" name="Comp_Column_2" value="{{row.Source_2.Comp_Column_2}}" readonly required></th>
+                    <th><input type="submit" name="button" class="btn btn--radius btn--black" font-size="10px" value="Compare"></th>
+                </form> 
+                </tr>
 
-                    </tr>
-
-
-
-
-                    {% endfor %}
-
-
+                {% endfor %}   
+                          
                 </table>
+            
+            
 
 
             </div>

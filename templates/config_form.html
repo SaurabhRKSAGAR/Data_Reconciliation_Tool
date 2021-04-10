@@ -4,7 +4,7 @@
 <head>
 
     <!-- Title Page-->
-    <title>Test CS Group 2 Project</title>
+    <title>Configuration Details</title>
 
     <!-- Icons font CSS-->
     <link href="../static/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -20,69 +20,98 @@
 
     <!-- Main CSS-->
     <link href="../static/css/main.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 <body>
-    <!-- self.user_name = urllib.parse.quote_plus('Your_Mongo_Username')
-        self.password = urllib.parse.quote_plus('Your_Mongo_Password')
-        self.database_name = "Mongo_Database_Name"
-        self.collection_Name = "Mongo_Collection_Name" -->
-        <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="close_1();">&times;</a>
-            <form action = "{{url_for('form_data_view')}}" method="GET">
-                <div class="p-t-15">
-                    <button class="btn btn--radius-2 btn--blue" type="submit">Home</button>
-                </div>
-            </form>
-            <form action = "{{url_for('history1')}}" method="GET">
-                <div class="p-t-15">
-                    <button class="btn btn--radius-2 btn--blue" type="submit">History</button>
-                </div>
-            </form>
-            <form action = "{{url_for('config_form_data_view')}}" method="GET">
-                <div class="p-t-15">
-                    <button class="btn btn--radius-2 btn--blue" type="submit">Config</button>
-                </div>
-            </form>
-            </div></a>
-          </div> 
+    <div>
+        <a href="https://www.credit-suisse.com/in/en.html"><img src="../static/CS_logo.svg" style="float: right; padding-right: 20px; padding-top: 20px; padding-bottom: 20px;"></a>
+    </div>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="close_1();">&times;</a>
+        <div>
+            <img src="../static/home_page_svg.svg" style="float:left; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; padding-left: 10px;">
+        </div>
+        <form action="{{url_for('form_data_view')}}" method="GET">
+            <div class="p-t-15">
+                <button class="btn btn--radius-2 btn--blue" type="submit">Home</button>
+            </div>
+        </form>
+        <form action="{{url_for('history1')}}" method="GET">
+            <div class="p-t-15">
+                <button class="btn btn--radius-2 btn--blue" type="submit">History</button>
+            </div>
+        </form>
+        <form action="{{url_for('config_form_data_view')}}" method="GET">
+            <div class="p-t-15">
+                <button class="btn btn--radius-2 btn--blue" type="submit">Config</button>
+            </div>
+        </form>
+    </div></a>
+    </div>
     <div class="page-wrapper bg-gra-02 p-t-10 p-b-100 font-poppins">
         <span style="font-size:30px;cursor:pointer" onclick="open_1();">&#9776;</span>
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
-                <div class="card-body"> 
-                    <center>
+                <br><u>
+                    <center><h1>Data Reconciliation Tool</h1></center></u>
+                <div class="card-body">
                     <h2 class="title">Configuration Details</h2>
-                    <form action="{{url_for('conn_details')}}" method="POST">
-                        <div class="p-t-15">
+                    {% if error %}
+                    <h2 class = "title"><strong>Error</strong>: {{error}}</h2><br>
+                    {% endif %}
+                    <form action="{{url_for('process_config_form_data')}}" method="POST">
+                        <div class="row row-space">
                             <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">User Name</label>
-                                    <input class="input--style-4" type="text" name="UserName" required>
+                                <label class="label">Source 1</label>
+                                <div class="rs-select2 js-select-simple select--no-search">
+                                    <select name="Source_1" required>
+                                        <option disabled="disabled" selected="selected" value="">Choose option</option>
+                                        <option>MongoDB</option>
+                                        <option>Excel Sheet</option>
+                                    </select>
+                                    <div class="select-dropdown"></div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <label class="label">Source 2</label>
+                                <div class="rs-select2 js-select-simple select--no-search">
+                                    <select name="Source_2" required>
+                                        <option disabled="disabled" selected="selected" value="">Choose option</option>
+                                        <option>MongoDB</option>
+                                        <option>Excel Sheet</option>
+                                    </select>
+                                    <div class="select-dropdown"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="p-t-15">
+                        <br><br>
+                        <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Password</label>
-                                    <input class="input--style-4" type="password" name="Password" required>
+                                    <label class="label">URI/File Path for Source 1</label>
+                                    <input class="input--style-4" type="text" name="Path_1" required>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">URI/File Path for Source 2</label>
+                                    <input class="input--style-4" type="text" name="Path_2" required>
                                 </div>
                             </div>
                         </div>
-                        <div class="p-t-15">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Database Name</label>
-                                    <input class="input--style-4" type="text" name="DBName" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-t-15">
+                        <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Collection Name</label>
-                                    <input class="input--style-4" type="text" name="CollectionName" required>
+                                    <input class="input--style-4" type="text" name="Collection_1">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Collection Name</label>
+                                    <input class="input--style-4" type="text" name="Collection_2">
                                 </div>
                             </div>
                         </div>
@@ -90,7 +119,6 @@
                             <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
                         </div>
                     </form>
-                </center>
                 </div>
             </div>
         </div>
@@ -105,6 +133,8 @@
 
     <!-- Main JS-->
     <script src="../static/js/global.js"></script>
+
+
 
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 

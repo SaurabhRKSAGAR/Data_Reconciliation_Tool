@@ -6,10 +6,15 @@
 {% block title %} Data Reconciliation Tool {% endblock %}
 
 
-
 {% block body %}
+<div>
+    <a href="https://www.credit-suisse.com/in/en.html"><img src="../static/CS_logo.svg" style="float: right; padding-right: 20px; padding-top: 20px; padding-bottom: 20px;"></a>
+</div>
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="close_1();">&times;</a>
+    <div>
+        <img src="../static/home_page_svg.svg" style="float:left; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; padding-left: 10px;">
+    </div>
     <form action = "{{url_for('form_data_view')}}" method="GET">
         <div class="p-t-15">
             <button class="btn btn--radius-2 btn--blue" type="submit">Home</button>

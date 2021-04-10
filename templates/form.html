@@ -19,12 +19,23 @@
     <!-- Main CSS-->
     <link href="static/css/main.css" rel="stylesheet" media="all">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="../static/fevicon.jpg" type="image/gif">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 
 <body>
+    <div>
+        <a href="https://www.credit-suisse.com/in/en.html"><img src="../static/CS_logo.svg" style="float: right; padding-right: 20px; padding-top: 20px; padding-bottom: 20px;"></a>
+    </div>
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="close_1();">&times;</a>
+        <div>
+            <img src="../static/home_page_svg.svg" style="float:left; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; padding-left: 10px;">
+        </div>
         <form action = "{{url_for('form_data_view')}}" method="GET">
             <div class="p-t-15">
                 <button class="btn btn--radius-2 btn--blue" type="submit">Home</button>
@@ -42,41 +53,34 @@
         </form>
         </div></a>
       </div> 
+      
       <div class="page-wrapper bg-gra-02 p-t-10 p-b-100 font-poppins">
         <span style="font-size:30px;cursor:pointer" onclick="open_1();">&#9776;</span>
         <div class="wrapper wrapper--w680">
+           
             <div class="card card-4">
+                <br><u>
+                <center><h1>Data Reconciliation Tool</h1></center></u>
                 <div class="card-body">
                     <h2 class="title">Query Details</h2>
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <script>
+                        var messages = {{ messages | safe }};
+                        for (var i = 0; i < messages.length; i++) {
+                            alert(messages[i]);
+                        }
+                    </script>
+                    {% endif %}
+                    {% endwith %}
+                    <h5>Please ensure that Source Configurations are performed.</h5>
+                <br>
+                <h5 style="color: blue;"><u><a href="{{url_for('config_form_data_view')}}"> Configure the sources here.</a></u><b></b></h5>
+                <br>
                     <form action = "{{url_for('process_form_data')}}" method="POST">
                         <div class="row row-space">
-                            <div class="col-2">
-                                <label class="label">Source 1</label>
-                                <div class="rs-select2 js-select-simple select--no-search">
-                                    <select name="Source_1" required>
-                                        <option disabled="disabled" selected="selected" value="">Choose option</option>
-                                        <option>MongoDB</option>
-                                        <option>API 1</option>
-                                        <option>API 2</option>
-                                    </select>
-                                    <div class="select-dropdown"></div>
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <label class="label">Source 2</label>
-                                <div class="rs-select2 js-select-simple select--no-search">
-                                    <select name="Source_2" required>
-                                        <option disabled="disabled" selected="selected" value="">Choose option</option>
-                                        <option>MongoDB</option>
-                                        <option>Excel Sheet</option>
-                                        <option>API 2</option>
-                                    </select>
-                                    <div class="select-dropdown"></div>
-                                </div>
-                            </div>
                         </div>
-                        <br><br>
-                        <div class="row row-space">
+                        <!-- <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Company name for Source 1</label>
@@ -89,7 +93,7 @@
                                     <input class="input--style-4" type="text" name="Company_2" required>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
@@ -142,11 +146,20 @@
                         <div class="input-group">
                             <label class="label">Select comparision column from source 1</label>
                             <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="Comp_Column_1" required>
+                                <select class = "select-state" name="Comp_Column_1" placeholder="Pick a state..." data-dropup-auto="false" required>
                                     <option disabled="disabled" selected="selected" value="">Choose option</option>
-                                    <option>Column 1</option>
-                                    <option>Column 2</option>
-                                    <option>Column 3</option>
+                                    <option>Prev_Close</option>
+                                    <option>Open_Price</option>
+                                    <option>High_Price</option>
+                                    <option>Low_Price</option>
+                                    <option>Last_Price</option>
+                                    <option>Close_Price</option>
+                                    <option>Avg_Price</option>
+                                    <option>TTL_TRD_QNTY</option>
+                                    <option>TURNOVER_LACS</option> 
+                                    <option>NO_OF_TRADES</option>
+                                    <option>DELIV_QTY</option>
+                                    <option>DELIV_PER</option>
                                 </select>
                                 <div class="select-dropdown"></div>
                             </div>
@@ -154,11 +167,20 @@
                         <div class="input-group">
                             <label class="label">Select comparision column from source 2</label>
                             <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="Comp_Column_2" required>
+                                <select class = "select-state" name="Comp_Column_2" data-dropup-auto="false" required>
                                     <option disabled="disabled" selected="selected" value="">Choose option</option>
-                                    <option>Column 1</option>
-                                    <option>Column 2</option>
-                                    <option>Column 3</option>
+                                    <option>Prev_Close</option>
+                                    <option>Open_Price</option>
+                                    <option>High_Price</option>
+                                    <option>Low_Price</option>
+                                    <option>Last_Price</option>
+                                    <option>Close_Price</option>
+                                    <option>Avg_Price</option>
+                                    <option>TTL_TRD_QNTY</option>
+                                    <option>TURNOVER_LACS</option> 
+                                    <option>NO_OF_TRADES</option>
+                                    <option>DELIV_QTY</option>
+                                    <option>DELIV_PER</option>
                                 </select>
                                 <div class="select-dropdown"></div>
                             </div>
@@ -173,15 +195,22 @@
     </div>
 
     <!-- Jquery JS-->
-    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <!-- <script src="static/vendor/jquery/jquery.min.js"></script> -->
     <!-- Vendor JS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
     <script src="static/vendor/select2/select2.min.js"></script>
     <script src="static/vendor/datepicker/moment.min.js"></script>
     <script src="static/vendor/datepicker/daterangepicker.js"></script>
 
     <!-- Main JS-->
     <script src="static/js/global.js"></script>
-
+    <script>
+        $(".select-state").select2( {
+         placeholder: "Select Field",
+         allowClear: true
+         } );
+    </script>
 
 
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
