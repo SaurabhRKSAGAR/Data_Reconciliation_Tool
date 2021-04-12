@@ -35,11 +35,13 @@ def form_data_view():
 @app.route("/api/history", methods=['GET', 'POST'])
 def history1():
     if request.method == 'GET':
+        print(history)
         return render_template("history.html", hRows=history)
 
 def save_data(Source_1, Source_2):
     tmp_dict = {'Source_1': Source_1, 'Source_2': Source_2} 
-    history.append(tmp_dict)
+    if(tmp_dict not in history):
+        history.append(tmp_dict)
 
 
 @app.route("/api/config", methods = ['GET','POST'])
@@ -146,7 +148,9 @@ def process_form_data():
     print(Source_1)
     print(Source_2)
     #print("RECV DATA")
-    save_data(Source_1, Source_2)
+    print("------------------")
+    print(history)
+    save_data(Source_1.copy(), Source_2.copy())
     result_list = [Source_1,Source_2]
     json_arg = json.dumps(result_list)
     res = requests.post("http://localhost:5000/api/processed_data",json=json_arg)
@@ -158,7 +162,7 @@ def process_form_data():
 
 @app.route("/api/db_populate", methods = ['GET'])
 def db_populate():
-    data = pd.read_csv("sec_bhavdata_full_Copy.csv")
+    data = pd.read_csv("INSERT_PATH_TO_EXCEL_FILE_HERE")
     payload = json.loads(data.to_json(orient='records'))
     collection_Name_2.insert_many(payload)
     print("Success")
