@@ -1,7 +1,5 @@
 from flask import Flask,make_response,request,jsonify,render_template,url_for,redirect,flash
-from flask_mongoengine import MongoEngine
 import requests
-from mongoengine import StringField
 import pandas as pd
 import json
 import pymongo
