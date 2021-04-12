@@ -1,6 +1,5 @@
 from flask import Flask,make_response,request,jsonify,render_template,url_for,redirect,flash
 from flask_mongoengine import MongoEngine
-from config import DB_connection
 import requests
 from mongoengine import StringField
 import pandas as pd
