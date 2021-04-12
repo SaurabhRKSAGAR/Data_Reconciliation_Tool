@@ -126,15 +126,6 @@ def process_config_form_data():
         flash("Configuration Details Successfully Stored")  
         return redirect(url_for('form_data_view'))  
 
-@app.route("/api/connection_details",methods = ['POST'])
-def conn_details():
-    conn_1 = {}
-    conn_1['UserName'] = request.form['UserName']
-    conn_1['Password'] = request.form['Password']
-    conn_1['DBName'] = request.form['DBName']
-    conn_1['CollectionName'] = request.form['CollectionName']
-    print(conn_1)
-    return redirect(url_for('form_data_view'))
 
 @app.route("/api/form_data", methods = ['POST'])
 def process_form_data():
@@ -157,13 +148,6 @@ def process_form_data():
     return render_template("index.html", Companies = json_res, Col_1 = Source_1['Comp_Column_1'], Col_2 = Source_2['Comp_Column_2'], Date_1=Source_1['Date_1'], Date_2 = Source_2['Date_2'])
     # return make_response("",200)
 
-@app.route("/api/db_populate", methods = ['GET'])
-def db_populate():
-    data = pd.read_csv("INSERT_PATH_TO_EXCEL_FILE_HERE")
-    payload = json.loads(data.to_json(orient='records'))
-    collection_Name_2.insert_many(payload)
-    print("Success")
-    return make_response("",200)
 
 @app.route("/api/processed_data", methods = ['GET','POST'])
 def process_data():
@@ -181,6 +165,11 @@ def process_data():
 
         if(sources[0]['Source_1'] == "Excel Sheet" and sources[1]['Source_2'] == "Excel Sheet"):
             diff = source_comparision.excel_excel(excel_path_1,excel_path_2,sources)
+            json_diff = json.dumps(diff)
+            return jsonify({'difference_data': json_diff})
+
+        if(sources[0]['Source_1'] == "Excel Sheet" and sources[1]['Source_2'] == "MongoDB"):
+            diff = source_comparision.excel_mongo(collection_Name_2,excel_path_1,sources)
             json_diff = json.dumps(diff)
             return jsonify({'difference_data': json_diff})
 
