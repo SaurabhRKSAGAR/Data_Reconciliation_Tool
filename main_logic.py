@@ -35,7 +35,7 @@ def form_data_view():
 def history1():
     if request.method == 'GET':
         print(history)
-        return render_template("history.html", hRows=history)
+        return render_template("history.html", hRows=history[:-7:-1])
 
 def save_data(Source_1, Source_2):
     tmp_dict = {'Source_1': Source_1, 'Source_2': Source_2} 
