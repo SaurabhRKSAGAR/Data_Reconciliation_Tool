@@ -10,7 +10,7 @@
 
 ## Tech Stack:
 
-<img src="https://drive.google.com/uc?export=view&id=1fbe3u4AWNAZGskB2DrdUqCTu6bs_ussh" alt="drawing" width="500" />
+<img src="https://drive.google.com/uc?export=view&id=1fbe3u4AWNAZGskB2DrdUqCTu6bs_ussh" alt="Tech Stack" width="500" />
 
 ## Dependancies 
 ~~~python:
